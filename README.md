@@ -1,5 +1,5 @@
-#Otm-Harjoitustyö
+# Otm-Harjoitustyö
 
-*Eka viikko*
+**Eka viikko**
 hyvin meni kai
-ja no vähä **italic stuff**
+ja no vähä *italic stuff*
