@@ -13,3 +13,7 @@ ja no vähä *italic stuff*, paikallisia muutoksia ny välillä tapahtuu
 
 
 __Muutos *2.0*__
+
+## Dokumentaatio
+[vaatimusmäärittely](https://github.com/Etsku520/otm-harjoitustyo/blob/master/documentation/m%C3%A4%C3%A4rittelydokumentti.md)
+[aikatuntikirjanpito](https://github.com/Etsku520/otm-harjoitustyo/blob/master/documentation/tuntikirjanpito.md)
