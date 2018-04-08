@@ -15,15 +15,15 @@ public class StickFightApp extends Application{
     @Override
     public void start(Stage primaryStage) throws Exception {
         primaryStage.setTitle("Gliding Stickmen");
-        UserInter menu = new UserInter(WIDTH, HEIGHT, primaryStage);
-        menu.createMenu();
+        UserInter scene = new UserInter(WIDTH, HEIGHT, primaryStage);
+        scene.createMenu();
         Map<KeyCode, Boolean> pressedButtons = new HashMap<>();
         
         //function for setting keys to be pressed
-        menu.getMenu().setOnKeyPressed(event -> {
+        scene.getScene().setOnKeyPressed(event -> {
             pressedButtons.put(event.getCode(), Boolean.TRUE);
         });
-        menu.getMenu().setOnKeyReleased(event -> {
+        scene.getScene().setOnKeyReleased(event -> {
             pressedButtons.put(event.getCode(), Boolean.FALSE);
         });
         
@@ -32,23 +32,23 @@ public class StickFightApp extends Application{
             public void handle(long moment) {
                 //player 1 movement
                 if(pressedButtons.getOrDefault(KeyCode.D, Boolean.FALSE)) {
-                    menu.movePlayer1Right();
+                    scene.movePlayer1Right();
                 }                
                 if(pressedButtons.getOrDefault(KeyCode.A, Boolean.FALSE)) {
-                    menu.movePlayer1Left();
+                    scene.movePlayer1Left();
                 }
                 
                 //player 2 movement
                 if(pressedButtons.getOrDefault(KeyCode.RIGHT, Boolean.FALSE)) {
-                    menu.movePlayer2Right();
+                    scene.movePlayer2Right();
                 }                
                 if(pressedButtons.getOrDefault(KeyCode.LEFT, Boolean.FALSE)) {
-                    menu.movePlayer2Left();
+                    scene.movePlayer2Left();
                 }
             }
         }.start();
         
-        primaryStage.setScene(menu.getMenu());
+        primaryStage.setScene(scene.getScene());
         primaryStage.show();
     }
     

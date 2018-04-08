@@ -15,7 +15,7 @@ import javafx.stage.Stage;
 public class UserInter {
     private int width;
     private int height;
-    private Scene menu;
+    private Scene scene;
     private BorderPane layout;
     private FightStage area;
     private Stage stage;
@@ -83,11 +83,11 @@ public class UserInter {
         layout.setBottom(exitButton);
         vButtons.setAlignment(Pos.CENTER);
         
-        menu = new Scene(layout, width, height);
+        scene = new Scene(layout, width, height);
     }
 
-    public Scene getMenu() {
-        return menu;
+    public Scene getScene() {
+        return scene;
     }
     
     public void movePlayer1Right() {
