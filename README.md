@@ -9,8 +9,8 @@
 ### Testsaus
 Testit toimii tällä:
 
-  mvn test
+    mvn test
   
 Ja jacoco testikattavuusraportti tulee komennolla
 
-  mvn jacoco:report
+    mvn jacoco:report
