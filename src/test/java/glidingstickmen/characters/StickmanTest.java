@@ -1,6 +1,5 @@
 package glidingstickmen.characters;
 
-import glidingsitckmen.characters.Stickman;
 import org.junit.After;
 import org.junit.AfterClass;
 import static org.junit.Assert.assertEquals;
