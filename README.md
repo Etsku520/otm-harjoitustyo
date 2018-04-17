@@ -5,6 +5,8 @@
 
 [tuntikirjanpito](https://github.com/Etsku520/otm-harjoitustyo/blob/master/documentation/tuntikirjanpito.md)
 
+[arkkitehtuuri](https://github.com/Etsku520/otm-harjoitustyo/blob/master/documentation/arkkitehtuuri.md)
+
 ## Komentorivitoiminnot
 ### Testsaus
 Testit toimii tällä:
