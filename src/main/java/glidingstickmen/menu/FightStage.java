@@ -1,4 +1,4 @@
-package glidingstickmen.fight;
+package glidingstickmen.menu;
 
 import glidingstickmen.characters.Stickman;
 import javafx.scene.Scene;

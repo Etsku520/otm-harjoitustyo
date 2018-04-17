@@ -1,7 +1,6 @@
 package glidingstickmen.menu;
 
 import glidingstickmen.characters.Stickman;
-import glidingstickmen.fight.FightStage;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -142,4 +141,9 @@ public class UserInter {
         
         return vButtons;
     }
+
+    public void setArea(FightStage area) {
+        this.area = area;
+    }
+    
 }

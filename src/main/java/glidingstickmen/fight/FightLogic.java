@@ -5,6 +5,12 @@ import glidingstickmen.menu.UserInter;
 import java.util.Map;
 import javafx.scene.input.KeyCode;
 
+/**
+*Meant to contain much of the logic behind the game
+* 
+* @param UserInter              an unser interface used in the game
+* @param Map<KeyCode,Boolean>  a map use for seeing what buttons are pressed
+*/
 public class FightLogic {
     private UserInter scene;
     Map<KeyCode, Boolean> pressedButtons;
@@ -12,14 +18,6 @@ public class FightLogic {
     public FightLogic(UserInter scene, Map<KeyCode, Boolean> pressedButtons) {
         this.scene = scene;
         this.pressedButtons = pressedButtons;
-    }
-    
-    public void checkPressedButtons() {
-        player1Movement();
-        player2Movement();
-
-        player1Attack();
-        player2Attack();
     }
     
     public void player1Movement() {
