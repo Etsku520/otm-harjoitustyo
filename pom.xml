@@ -38,7 +38,7 @@
                     <excludes>
 <!--                        <exclude>glidingstickmen/*</exclude>
                         <exclude>glidingstickmen/menu/*</exclude>
-                        <exclude>glidingstickmen/fight/FirghtArea.java</exclude> -->
+ -->
                     </excludes>
                 </configuration>
                 <executions>
