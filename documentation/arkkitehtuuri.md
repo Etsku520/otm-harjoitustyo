@@ -1,5 +1,6 @@
-Pakkauskaavio
+##Pakkauskaavio
 
 ![](images/Pakkauskaavio.png)
-Sekvenssikaavio
+##Sekvenssikaavio
+
 ![](images/Sekvenssiready.png)
