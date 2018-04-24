@@ -3,6 +3,9 @@
 ## Lyhyt kuvaus
 Ohjelma on varsinkin tällä hetkellä glorified kivi-paperi-sakset, mutta jos jää aikaa niin teen siitä vähän järkevämmän. Se on tappelu peli jossa erän voittaa yhdellä osumalla ja kummallakin on 3 erillaista hyökkäystä (jotka toimivat kuin kivi-paperi-sakset).
 
+## Releases
+[viikko 5 release](https://github.com/Etsku520/otm-harjoitustyo/releases/tag/viikko5)
+
 ## Dokumentaatio
 [vaatimusmäärittely](https://github.com/Etsku520/otm-harjoitustyo/blob/master/documentation/m%C3%A4%C3%A4rittelydokumentti.md)
 
