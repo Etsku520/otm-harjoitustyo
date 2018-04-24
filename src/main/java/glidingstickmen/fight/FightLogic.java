@@ -4,6 +4,7 @@ import glidingstickmen.characters.Stickman;
 import glidingstickmen.menu.UserInter;
 import java.util.Map;
 import javafx.scene.input.KeyCode;
+import javafx.scene.layout.Pane;
 
 /**
 *Meant to contain much of the logic behind the game
@@ -39,9 +40,8 @@ public class FightLogic {
     }
     
     public void player1Attack() {
-        boolean attack = false;
         if (pressedButtons.getOrDefault(KeyCode.R, Boolean.FALSE)) {
-            scene.getArea().getPlayer1().setStance(1);            
+            scene.getArea().getPlayer1().setStance(1);
         }
 
 
@@ -67,6 +67,7 @@ public class FightLogic {
                 scene.winScreen(hit);
             }
         }
+        moveLeft(scene.getArea().getPlayer1(), 0);
     }
     
     public void player2Attack() {
@@ -96,13 +97,19 @@ public class FightLogic {
                 scene.winScreen(hit);
             }
         }
+        moveLeft(scene.getArea().getPlayer2(), 0);
     }
     
     public boolean moveRight(Stickman stickman, int x) {
         int[] position = stickman.getPosition();
-        if (position[0] + 50 + x < 1000 && x > 0) {
+        if (position[0] + 50 + x < 1000 && x >= 0) {
             position[0] = position[0] + x;
-            stickman.setPosition(position);
+            if(scene.getArea().getPlayer1() != stickman) {
+                stickman.setPosition(position, scene.getArea().getArea(), stickman.getPosition()[0] - scene.getArea().getPlayer1().getPosition()[0]);
+            } else {
+                stickman.setPosition(position, scene.getArea().getArea(), stickman.getPosition()[0] - scene.getArea().getPlayer2().getPosition()[0]);
+            }
+            
             return true;
         }
         return false;
@@ -110,16 +117,20 @@ public class FightLogic {
     
     public boolean moveLeft(Stickman stickman, int x) {
         int[] position = stickman.getPosition();
-        if (position[0] - 50 - x > 0 && x > 0) {
+        if (position[0] - 50 - x > 0 && x >= 0) {
             position[0] = position[0] - x;
-            stickman.setPosition(position);
+            if(scene.getArea().getPlayer1() != stickman) {
+                stickman.setPosition(position, scene.getArea().getArea(), stickman.getPosition()[0] - scene.getArea().getPlayer1().getPosition()[0]);
+            } else {
+                stickman.setPosition(position, scene.getArea().getArea(), stickman.getPosition()[0] - scene.getArea().getPlayer2().getPosition()[0]);
+            }
             return true;
         }
         return false;
     }
     
     public int scoreOrWin(Stickman stickman1, Stickman stickman2) {
-        if (Math.abs(stickman2.getPosition()[0] - stickman1.getPosition()[0]) < 300) {
+        if (Math.abs(stickman2.getPosition()[0] - stickman1.getPosition()[0]) < 180) {
             if (stickman1.getStance() - stickman2.getStance() == -1 
                     || stickman1.getStance() - stickman2.getStance() == stickman1.getStance() 
                     || stickman1.getStance() - stickman2.getStance() == 2) {

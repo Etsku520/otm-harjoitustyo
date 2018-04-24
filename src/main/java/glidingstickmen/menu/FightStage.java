@@ -14,19 +14,20 @@ public class FightStage {
     Stickman player1;
     Stickman player2;
 
-    public FightStage(int widht, int heigth) {
+    public FightStage(int widht, int heigth, String p1Name, String p2Name) {
         this.widht = widht;
         this.heigth = heigth;
         area = new Pane();
         score = new int[2];
-        player1 = new Stickman(new int[]{100, 225}, 1);
-        player2 = new Stickman(new int[]{900, 225}, 2);
+        player1 = new Stickman(new int[]{100, 225}, 1, p1Name);
+        player2 = new Stickman(new int[]{900, 225}, 2, p2Name);
         
     }
     
     public void createArea() {
         player1.putSickmanToPane(area);
         player2.putSickmanToPane(area);
+        player1.position1M(area);
     }
 
     public Pane getArea() {
@@ -50,7 +51,7 @@ public class FightStage {
     }
     
     public void resetPositions() {
-        player1.setPosition(new int[] {100, 225});
-        player2.setPosition(new int[] {900, 225});
+        player1.setPosition(new int[] {100, 225}, area, 0);
+        player2.setPosition(new int[] {900, 225}, area, 0);
     }
 }

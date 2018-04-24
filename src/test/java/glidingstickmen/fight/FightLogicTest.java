@@ -34,7 +34,7 @@ public class FightLogicTest {
     @Before
     public void setUp() {
         pressedButtons = new HashMap<>();
-        FightStage area = new FightStage(1500, 900);
+        FightStage area = new FightStage(1500, 900, "rick", "morty");
         area.createArea();
         scene.setArea(area);
         logic = new FightLogic(scene, pressedButtons);
@@ -76,8 +76,8 @@ public class FightLogicTest {
     public void attackHitOrMiss() {
         assertEquals(0, logic.scoreOrWin(scene.getArea().getPlayer1(), scene.getArea().getPlayer2()));
         
-        scene.getArea().getPlayer1().setPosition(new int[]{150, 225});
-        scene.getArea().getPlayer2().setPosition(new int[]{150, 225});
+        scene.getArea().getPlayer1().setPosition(new int[]{150, 225}, scene.getArea().getArea(), 2);
+        scene.getArea().getPlayer2().setPosition(new int[]{150, 225}, scene.getArea().getArea(), 2);
         scene.getArea().getPlayer1().setStance(1);
         
         assertEquals(-1, logic.scoreOrWin(scene.getArea().getPlayer1(), scene.getArea().getPlayer2()));
@@ -85,8 +85,8 @@ public class FightLogicTest {
     
     @Test
     public void stanceCounters() {
-        scene.getArea().getPlayer1().setPosition(new int[]{150, 225});
-        scene.getArea().getPlayer2().setPosition(new int[]{150, 225});
+        scene.getArea().getPlayer1().setPosition(new int[]{150, 225}, scene.getArea().getArea(), 2);
+        scene.getArea().getPlayer2().setPosition(new int[]{150, 225}, scene.getArea().getArea(), -2);
         
         //stance 1
         pressedButtons.put(KeyCode.R, Boolean.TRUE);
@@ -96,8 +96,8 @@ public class FightLogicTest {
         assertEquals(1, scene.getArea().getScore()[0]);
         pressedButtons.put(KeyCode.R, Boolean.FALSE);
         pressedButtons.put(KeyCode.COMMA, Boolean.FALSE);
-        scene.getArea().getPlayer1().setPosition(new int[]{150, 225});
-        scene.getArea().getPlayer2().setPosition(new int[]{150, 225});
+        scene.getArea().getPlayer1().setPosition(new int[]{150, 225},  scene.getArea().getArea(), -2);
+        scene.getArea().getPlayer2().setPosition(new int[]{150, 225},  scene.getArea().getArea(), 2);
         
         pressedButtons.put(KeyCode.R, Boolean.TRUE);
         pressedButtons.put(KeyCode.PERIOD, Boolean.TRUE);
@@ -106,8 +106,8 @@ public class FightLogicTest {
         assertEquals(1, scene.getArea().getScore()[0]);
         pressedButtons.put(KeyCode.R, Boolean.FALSE);
         pressedButtons.put(KeyCode.PERIOD, Boolean.FALSE);
-        scene.getArea().getPlayer1().setPosition(new int[]{150, 225});
-        scene.getArea().getPlayer2().setPosition(new int[]{150, 225});
+        scene.getArea().getPlayer1().setPosition(new int[]{150, 225},  scene.getArea().getArea(), 2);
+        scene.getArea().getPlayer2().setPosition(new int[]{150, 225},  scene.getArea().getArea(), -2);
         
         pressedButtons.put(KeyCode.R, Boolean.TRUE);
         pressedButtons.put(KeyCode.MINUS, Boolean.TRUE);
@@ -116,8 +116,8 @@ public class FightLogicTest {
         assertEquals(1, scene.getArea().getScore()[0]);
         pressedButtons.put(KeyCode.R, Boolean.FALSE);
         pressedButtons.put(KeyCode.MINUS, Boolean.FALSE);
-        scene.getArea().getPlayer1().setPosition(new int[]{150, 225});
-        scene.getArea().getPlayer2().setPosition(new int[]{150, 225});
+        scene.getArea().getPlayer1().setPosition(new int[]{150, 225}, scene.getArea().getArea(), -2);
+        scene.getArea().getPlayer2().setPosition(new int[]{150, 225},  scene.getArea().getArea(), 2);
         
         //stance 2
         pressedButtons.put(KeyCode.T, Boolean.TRUE);
@@ -127,8 +127,8 @@ public class FightLogicTest {
         assertEquals(1, scene.getArea().getScore()[0]);
         pressedButtons.put(KeyCode.T, Boolean.FALSE);
         pressedButtons.put(KeyCode.COMMA, Boolean.FALSE);
-        scene.getArea().getPlayer1().setPosition(new int[]{150, 225});
-        scene.getArea().getPlayer2().setPosition(new int[]{150, 225});
+        scene.getArea().getPlayer1().setPosition(new int[]{150, 225}, scene.getArea().getArea(), 2);
+        scene.getArea().getPlayer2().setPosition(new int[]{150, 225}, scene.getArea().getArea(), -2);
         
         pressedButtons.put(KeyCode.T, Boolean.TRUE);
         pressedButtons.put(KeyCode.PERIOD, Boolean.TRUE);
@@ -137,8 +137,8 @@ public class FightLogicTest {
         assertEquals(1, scene.getArea().getScore()[0]);
         pressedButtons.put(KeyCode.T, Boolean.FALSE);
         pressedButtons.put(KeyCode.PERIOD, Boolean.FALSE);
-        scene.getArea().getPlayer1().setPosition(new int[]{150, 225});
-        scene.getArea().getPlayer2().setPosition(new int[]{150, 225});
+        scene.getArea().getPlayer1().setPosition(new int[]{150, 225}, scene.getArea().getArea(), -2);
+        scene.getArea().getPlayer2().setPosition(new int[]{150, 225}, scene.getArea().getArea(), 2);
         
         pressedButtons.put(KeyCode.T, Boolean.TRUE);
         pressedButtons.put(KeyCode.MINUS, Boolean.TRUE);
@@ -147,8 +147,8 @@ public class FightLogicTest {
         assertEquals(2, scene.getArea().getScore()[0]);
         pressedButtons.put(KeyCode.T, Boolean.FALSE);
         pressedButtons.put(KeyCode.MINUS, Boolean.FALSE);
-        scene.getArea().getPlayer1().setPosition(new int[]{150, 225});
-        scene.getArea().getPlayer2().setPosition(new int[]{150, 225});
+        scene.getArea().getPlayer1().setPosition(new int[]{150, 225}, scene.getArea().getArea(), 2);
+        scene.getArea().getPlayer2().setPosition(new int[]{150, 225}, scene.getArea().getArea(), -2);
         
         //stance 3
         pressedButtons.put(KeyCode.Y, Boolean.TRUE);
@@ -158,11 +158,11 @@ public class FightLogicTest {
         assertEquals(2, scene.getArea().getScore()[0]);
         pressedButtons.put(KeyCode.Y, Boolean.FALSE);
         pressedButtons.put(KeyCode.COMMA, Boolean.FALSE);
-        FightStage area = new FightStage(1500, 900);
+        FightStage area = new FightStage(1500, 900, "rick", "morty");
         area.createArea();
         scene.setArea(area);
-        scene.getArea().getPlayer1().setPosition(new int[]{150, 225});
-        scene.getArea().getPlayer2().setPosition(new int[]{150, 225});
+        scene.getArea().getPlayer1().setPosition(new int[]{150, 225}, scene.getArea().getArea(), -2);
+        scene.getArea().getPlayer2().setPosition(new int[]{150, 225}, scene.getArea().getArea(), 2);
         
         pressedButtons.put(KeyCode.Y, Boolean.TRUE);
         pressedButtons.put(KeyCode.PERIOD, Boolean.TRUE);;
@@ -171,8 +171,8 @@ public class FightLogicTest {
         assertEquals(1, scene.getArea().getScore()[0]);
         pressedButtons.put(KeyCode.Y, Boolean.FALSE);
         pressedButtons.put(KeyCode.PERIOD, Boolean.FALSE);
-        scene.getArea().getPlayer1().setPosition(new int[]{150, 225});
-        scene.getArea().getPlayer2().setPosition(new int[]{150, 225});
+        scene.getArea().getPlayer1().setPosition(new int[]{150, 225}, scene.getArea().getArea(), 2);
+        scene.getArea().getPlayer2().setPosition(new int[]{150, 225}, scene.getArea().getArea(), -2);
         
         pressedButtons.put(KeyCode.Y, Boolean.TRUE);
         pressedButtons.put(KeyCode.MINUS, Boolean.TRUE);
@@ -181,14 +181,14 @@ public class FightLogicTest {
         assertEquals(1, scene.getArea().getScore()[0]);
         pressedButtons.put(KeyCode.Y, Boolean.FALSE);
         pressedButtons.put(KeyCode.MINUS, Boolean.FALSE);
-        scene.getArea().getPlayer1().setPosition(new int[]{150, 225});
-        scene.getArea().getPlayer2().setPosition(new int[]{150, 225});
+        scene.getArea().getPlayer1().setPosition(new int[]{150, 225}, scene.getArea().getArea(), -2);
+        scene.getArea().getPlayer2().setPosition(new int[]{150, 225}, scene.getArea().getArea(), 2);
     }
     
     @Test
     public void quickP2Attack() {
-        scene.getArea().getPlayer1().setPosition(new int[]{150, 225});
-        scene.getArea().getPlayer2().setPosition(new int[]{150, 225});
+        scene.getArea().getPlayer1().setPosition(new int[]{150, 225}, scene.getArea().getArea(), 2);
+        scene.getArea().getPlayer2().setPosition(new int[]{150, 225}, scene.getArea().getArea(), -2);
         
         pressedButtons.put(KeyCode.COMMA, Boolean.TRUE);
         pressedButtons.put(KeyCode.R, Boolean.TRUE);
@@ -197,14 +197,14 @@ public class FightLogicTest {
         //stance 1
         logic.player2Attack();
         assertEquals(0, scene.getArea().getScore()[1]);
-        scene.getArea().getPlayer1().setPosition(new int[]{150, 225});
-        scene.getArea().getPlayer2().setPosition(new int[]{150, 225});
+        scene.getArea().getPlayer1().setPosition(new int[]{150, 225},  scene.getArea().getArea(), -2);
+        scene.getArea().getPlayer2().setPosition(new int[]{150, 225}, scene.getArea().getArea(), 2);
         pressedButtons.put(KeyCode.COMMA, Boolean.FALSE);
         
         pressedButtons.put(KeyCode.PERIOD, Boolean.TRUE);
         logic.player2Attack();
         assertEquals(1, scene.getArea().getScore()[1]);
-        scene.getArea().getPlayer1().setPosition(new int[]{150, 225});
-        scene.getArea().getPlayer2().setPosition(new int[]{150, 225});
+        scene.getArea().getPlayer1().setPosition(new int[]{150, 225}, scene.getArea().getArea(), 2);
+        scene.getArea().getPlayer2().setPosition(new int[]{150, 225}, scene.getArea().getArea(), -2);
     }
 }

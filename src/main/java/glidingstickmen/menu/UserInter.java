@@ -7,7 +7,9 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -23,7 +25,7 @@ public class UserInter {
         this.width = width;
         this.height = height;
         this.layout = new BorderPane();
-        area = new FightStage(width, height);
+        area = new FightStage(width, height, "palyer 1", "player 2");
         area.createArea();
     }
     
@@ -66,7 +68,12 @@ public class UserInter {
     
     public void winScreen(int player) {
         VBox win = new VBox();
-        Label text = new Label("Player " + player + " won!");
+        Label text = new Label("nobody won!");
+        if (player == 1) {
+            text = new Label(area.player1.getName() + " won!");
+        } else {
+            text = new Label(area.player2.getName() + " won!");
+        }
         Label score = new Label(getArea().getScore()[0] + " - " + getArea().getScore()[1]);
         win.getChildren().add(text);
         win.getChildren().add(score);
@@ -93,9 +100,9 @@ public class UserInter {
         playButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                area = new FightStage(width, height);
-                area.createArea();
-                layout.setCenter(area.getArea());
+                GridPane naming = playerNaming();
+                naming.setAlignment(Pos.CENTER);
+                layout.setCenter(naming);
             }
             
         });
@@ -140,6 +147,37 @@ public class UserInter {
         });
         
         return vButtons;
+    }
+    
+    public GridPane playerNaming() {
+        GridPane naming = new GridPane();
+        naming.setVgap(5);
+        naming.setHgap(5);
+        
+        TextField p1Name = new TextField();
+        p1Name.setPromptText("Player 1");
+        GridPane.setConstraints(p1Name, 0, 0);
+        naming.getChildren().add(p1Name);
+        
+        TextField p2Name = new TextField();
+        p2Name.setPromptText("Player 2");
+        GridPane.setConstraints(p2Name, 2, 0);
+        naming.getChildren().add(p2Name);
+        
+        Button ready = new Button("Ready!");
+        GridPane.setConstraints(ready, 1, 1);
+        naming.getChildren().add(ready);
+        
+        ready.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                area = new FightStage(width, height, p1Name.getText(), p2Name.getText());
+                area.createArea();
+                layout.setCenter(area.getArea());
+            }
+        });
+        
+        return naming;
     }
 
     public void setArea(FightStage area) {

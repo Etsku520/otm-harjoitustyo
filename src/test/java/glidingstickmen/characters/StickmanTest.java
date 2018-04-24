@@ -1,5 +1,6 @@
 package glidingstickmen.characters;
 
+import javafx.scene.layout.Pane;
 import org.junit.After;
 import org.junit.AfterClass;
 import static org.junit.Assert.assertEquals;
@@ -24,7 +25,7 @@ public class StickmanTest {
     
     @Before
     public void setUp() {
-        stickman = new Stickman(new int[]{100, 200} ,1);
+        stickman = new Stickman(new int[]{100, 200} ,1, "rick");
     }
     
     @After
@@ -40,7 +41,7 @@ public class StickmanTest {
     @Test
     public void setPosition() {
         int[] place = new int[]{145, 111};
-        stickman.setPosition(place);
+        stickman.setPosition(place, new Pane(), 2);
         
         assertEquals(place, stickman.getPosition());
     }
