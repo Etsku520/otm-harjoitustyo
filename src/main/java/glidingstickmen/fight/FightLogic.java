@@ -104,7 +104,7 @@ public class FightLogic {
         int[] position = stickman.getPosition();
         if (position[0] + 50 + x < 1000 && x >= 0) {
             position[0] = position[0] + x;
-            if(scene.getArea().getPlayer1() != stickman) {
+            if (scene.getArea().getPlayer1() != stickman) {
                 stickman.setPosition(position, scene.getArea().getArea(), stickman.getPosition()[0] - scene.getArea().getPlayer1().getPosition()[0]);
             } else {
                 stickman.setPosition(position, scene.getArea().getArea(), stickman.getPosition()[0] - scene.getArea().getPlayer2().getPosition()[0]);
@@ -119,7 +119,7 @@ public class FightLogic {
         int[] position = stickman.getPosition();
         if (position[0] - 50 - x > 0 && x >= 0) {
             position[0] = position[0] - x;
-            if(scene.getArea().getPlayer1() != stickman) {
+            if (scene.getArea().getPlayer1() != stickman) {
                 stickman.setPosition(position, scene.getArea().getArea(), stickman.getPosition()[0] - scene.getArea().getPlayer1().getPosition()[0]);
             } else {
                 stickman.setPosition(position, scene.getArea().getArea(), stickman.getPosition()[0] - scene.getArea().getPlayer2().getPosition()[0]);
