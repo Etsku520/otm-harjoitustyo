@@ -5,7 +5,7 @@ Toimii ilman mitään konfigurointia tai ainakin pitäisi.
 
 ## Ohjelman käynnistäminen
 Ohjelma käynnistynee komennolla
-		java -jar GlidingStickmen.jar
+	java -jar GlidingStickmen.jar
 
 ## Main menu
 Ohelman napit:
