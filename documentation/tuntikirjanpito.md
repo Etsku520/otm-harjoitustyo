@@ -22,4 +22,10 @@
 
 17.04 1.30h   testit
 
-yhteensä: 13h 55min
+24.04 3h      asennot ja testien korjaus/muuttaminen
+
+24.04 1h      Nimien lisääminen pelaajille
+
+24.04 2h      Checkstyle korjaus, skvenssikaavio, jar tiesdosto, README muokkaus
+
+yhteensä: 19h 55min
