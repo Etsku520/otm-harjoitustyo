@@ -5,6 +5,7 @@ Ohjelma on varsinkin tällä hetkellä glorified kivi-paperi-sakset, mutta jos j
 
 ## Releases
 [viikko 5 release](https://github.com/Etsku520/otm-harjoitustyo/releases/tag/viikko5)
+
 [viikko 6 release](https://github.com/Etsku520/otm-harjoitustyo/releases/tag/viikko6)
 
 ## Dokumentaatio
