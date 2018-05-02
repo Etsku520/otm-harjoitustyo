@@ -147,16 +147,10 @@ public class Stickman {
         body.setTranslateY(position[1] + 150 / 2);
         body.setTranslateX(position[0] - 150 / 2);
         
-        area.getChildren().remove(arm1);
-        arm1 = new Polygon(0, 0, 150, 0, 150, 15, 0, 15);
-        area.getChildren().add(arm1);
         arm1.setRotate(60);
         arm1.setTranslateY(position[1] + 150 / 2 + 20);
         arm1.setTranslateX(position[0] - 150 / 2 + 40);
         
-        area.getChildren().remove(arm2);
-        arm2 = new Polygon(0, 0, 150, 0, 150, 15, 0, 15);
-        area.getChildren().add(arm2);
         arm2.setRotate(-60);
         arm2.setTranslateY(position[1] + 150 / 2 + 20);
         arm2.setTranslateX(position[0] - 150 / 2 - 40);
