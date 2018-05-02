@@ -27,7 +27,7 @@ Ja jacoco testikattavuusraportti tulee komennolla
     
 Jos checkstyle toimii niin se onnistuu komennolla
 
-     mvn jxr:jxr checkstyle:checkstyle
+    mvn jxr:jxr checkstyle:checkstyle
     
 ### Jar
 jar tiedoston tekeminen onnistuu komennolla
