@@ -184,16 +184,12 @@ public class Stickman {
     public void position1(Pane area) {
         position0(area);
         head.setTranslateY(position[1] + 75);
-        head.setTranslateX(position[0]);
         
         body.setTranslateY(position[1] + 150);
-        body.setTranslateX(position[0] - 150 / 2);
         
         arm1.setTranslateY(position[1] + 150 + 20);
-        arm1.setTranslateX(position[0] - 150 / 2 + 40);
         
         arm2.setTranslateY(position[1] + 150 + 20);
-        arm2.setTranslateX(position[0] - 150 / 2 - 40);
         
         area.getChildren().remove(leg1);
         leg1 = new Polygon(0, 0, 85, 0, 85, 20, 0, 20);
