@@ -1,10 +1,8 @@
 package glidingstickmen.menu;
 
 import glidingstickmen.characters.Stickman;
-import javafx.scene.Scene;
-import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
-import javafx.scene.shape.Circle;
+
 
 public class FightStage {
     Pane area;

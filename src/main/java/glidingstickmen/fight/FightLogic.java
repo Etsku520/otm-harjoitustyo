@@ -1,45 +1,81 @@
 package glidingstickmen.fight;
 
 import glidingstickmen.characters.Stickman;
+import glidingstickmen.dao.Score;
+import glidingstickmen.dao.ScoreDao;
 import glidingstickmen.menu.UserInter;
+import java.sql.SQLException;
 import java.util.Map;
 import javafx.scene.input.KeyCode;
-import javafx.scene.layout.Pane;
 
 /**
-*Meant to contain much of the logic behind the game
-* 
-* @param UserInter              an unser interface used in the game
-* @param Map<KeyCode,Boolean>  a map use for seeing what buttons are pressed
+* Meant to contain much of the logic behind the game and by much I mean all.
 */
 public class FightLogic {
     private UserInter scene;
     Map<KeyCode, Boolean> pressedButtons;
+    ScoreDao scoreDao;
     
-    public FightLogic(UserInter scene, Map<KeyCode, Boolean> pressedButtons) {
+    /**
+    *Meant to contain much of the logic behind the game and by much I mean all.
+    * 
+    * @param scene              an unser interface used in the game
+    * @param pressedButtons     a map use for seeing what buttons are pressed
+    * @param scoreDao           ScoreDao used for database funcions
+    */
+    public FightLogic(UserInter scene, Map<KeyCode, Boolean> pressedButtons, ScoreDao scoreDao) {
         this.scene = scene;
         this.pressedButtons = pressedButtons;
+        this.scoreDao = scoreDao;
     }
     
+    /**
+     * checks if player 1 should be moving and how fast
+     */
     public void player1Movement() {
         if (pressedButtons.getOrDefault(KeyCode.D, Boolean.FALSE)) {
-            moveRight(scene.getArea().getPlayer1(), 2);
+            int x = 2;
+            if (scene.getArea().getPlayer1().getStance() != 0) {
+                x = 1;
+            }
+            moveRight(scene.getArea().getPlayer1(), x);
         }                
         if (pressedButtons.getOrDefault(KeyCode.A, Boolean.FALSE)) {
-            moveLeft(scene.getArea().getPlayer1(), 2);
+            int x = 2;
+            if (scene.getArea().getPlayer1().getStance() != 0) {
+                x = 1;
+            }
+            moveLeft(scene.getArea().getPlayer1(), x);
         }
     }
     
+    /**
+     * checks if player 2 should be moving and how fast
+     */
     public void player2Movement() {
         if (pressedButtons.getOrDefault(KeyCode.RIGHT, Boolean.FALSE)) {
-            moveRight(scene.getArea().getPlayer2(), 2);
-        }                
+            int x = 2;
+            if (scene.getArea().getPlayer2().getStance() != 0) {
+                x = 1;
+            }
+            moveRight(scene.getArea().getPlayer2(), x);
+        }
+        
         if (pressedButtons.getOrDefault(KeyCode.LEFT, Boolean.FALSE)) {
-            moveLeft(scene.getArea().getPlayer2(), 2);
+            int x = 2;
+            if (scene.getArea().getPlayer2().getStance() != 0) {
+                x = 1;
+            }
+            moveLeft(scene.getArea().getPlayer2(), x);
         }
     }
     
-    public void player1Attack() {
+    /**
+     * checks if a player 1 is attacking and checks the score
+     * 
+     * @throws SQLException 
+     */
+    public void player1Attack() throws SQLException {
         if (pressedButtons.getOrDefault(KeyCode.R, Boolean.FALSE)) {
             scene.getArea().getPlayer1().setStance(1);
         }
@@ -70,7 +106,12 @@ public class FightLogic {
         moveLeft(scene.getArea().getPlayer1(), 0);
     }
     
-    public void player2Attack() {
+    /**
+     * checks if a player 2 is attacking and checks the score
+     * 
+     * @throws SQLException 
+     */
+    public void player2Attack() throws SQLException {
         if (pressedButtons.getOrDefault(KeyCode.MINUS, Boolean.FALSE)) {
             scene.getArea().getPlayer2().setStance(1);
         }
@@ -100,6 +141,13 @@ public class FightLogic {
         moveLeft(scene.getArea().getPlayer2(), 0);
     }
     
+    /**
+     * Moves a player to right
+     * 
+     * @param stickman  The player that will be moved
+     * @param x         The amount the player is moved
+     * @return false if player hits a wall
+     */
     public boolean moveRight(Stickman stickman, int x) {
         int[] position = stickman.getPosition();
         if (position[0] + 50 + x < 1000 && x >= 0) {
@@ -115,6 +163,13 @@ public class FightLogic {
         return false;
     }
     
+    /**
+     * Moves a player to left
+     * 
+     * @param stickman  The player that will be moved
+     * @param x         The amount the player is moved
+     * @return false if player hits a wall
+     */
     public boolean moveLeft(Stickman stickman, int x) {
         int[] position = stickman.getPosition();
         if (position[0] - 50 - x > 0 && x >= 0) {
@@ -129,7 +184,15 @@ public class FightLogic {
         return false;
     }
     
-    public int scoreOrWin(Stickman stickman1, Stickman stickman2) {
+    /**
+     * Checks if the first given player hits the other one and changes the score
+     * 
+     * @param stickman1 character of player 1
+     * @param stickman2 character of player 2
+     * @return 0 if out of range, -1 if hit and the players number if the game is won
+     * @throws SQLException 
+     */
+    public int scoreOrWin(Stickman stickman1, Stickman stickman2) throws SQLException {
         if (Math.abs(stickman2.getPosition()[0] - stickman1.getPosition()[0]) < 180) {
             if (stickman1.getStance() - stickman2.getStance() == -1 
                     || stickman1.getStance() - stickman2.getStance() == stickman1.getStance() 
@@ -138,6 +201,12 @@ public class FightLogic {
                 scene.getArea().getScore()[player - 1] = scene.getArea().getScore()[player - 1] + 1;
 
                 if (scene.getArea().getScore()[player - 1] == 3) {
+                    Score score = new Score(scene.getArea().getPlayer1().getName(), 
+                            scene.getArea().getPlayer2().getName(), 
+                            scene.getArea().getScore()[0], scene.getArea().getScore()[1]);
+                    
+                    scoreDao.addScore(score);
+                    
                     return player;
                 }
                 return -1;

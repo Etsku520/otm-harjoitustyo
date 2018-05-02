@@ -13,6 +13,8 @@ Ohjelma on varsinkin tällä hetkellä glorified kivi-paperi-sakset, mutta jos j
 
 [arkkitehtuuri](https://github.com/Etsku520/otm-harjoitustyo/blob/master/documentation/arkkitehtuuri.md)
 
+[käyttöohjeet](https://github.com/Etsku520/otm-harjoitustyo/blob/master/documentation/käyttöohjeet.md)
+
 ## Komentorivitoiminnot
 ### Testsaus
 Testit toimii tällä:

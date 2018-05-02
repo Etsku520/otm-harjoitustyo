@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package glidingstickmen.characters;
 
 
@@ -11,8 +6,8 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Polygon;
 
 /**
- *
- * @author hceetu
+ * A character in the game, it's a stickman
+ * 
  */
 public class Stickman {
     int[] position;
@@ -25,12 +20,23 @@ public class Stickman {
     Polygon arm2;
     Polygon leg1;
     Polygon leg2;
-
+    
+    /**
+     * A character in the game, it's a stickman
+     * 
+     * @param position  The vocal point the stickman is build around
+     * @param player    The player number. at least now it's 1 or 2
+     * @param name      The name the player has chosen for himself
+     */
     public Stickman(int[] position, int player, String name) {
         this.position = position;
         this.player = player;
         this.stance = 0;
-        this.name = name;
+        if (name.trim().isEmpty()) {
+            this.name = "player " + player;
+        } else {
+            this.name = name;
+        }
         head = new Circle(0, 0, 30);
         head.setTranslateY(position[1]);
         head.setTranslateX(position[0]);
@@ -77,7 +83,11 @@ public class Stickman {
         return name;
     }
     
-    
+    /**
+     * the mothod puts the stickman to the pane that is iin ithe GUI
+     * 
+     * @param area the Pane used in the game
+     */
     public void putSickmanToPane(Pane area) {
         area.getChildren().add(head);
         area.getChildren().add(body);
@@ -91,7 +101,14 @@ public class Stickman {
         this.stance = stance;
         
     }
-
+    
+    /**
+     * This method sets a new position and changes the stance if needed
+     * 
+     * @param position  The new focal point
+     * @param area      the pane the stickman is in
+     * @param x         The amount moved 
+     */
     public void setPosition(int[] position, Pane area, int x) {
         this.position = position;
         
@@ -118,17 +135,15 @@ public class Stickman {
         }
     }
     
+    /**
+     * Puts the stickman to the normal standing position
+     * 
+     * @param area the pane used in the game
+     */
     public void position0 (Pane area) {
-        area.getChildren().remove(head);
-        head = new Circle(0, 0, 30);
-        area.getChildren().add(head);
         head.setTranslateY(position[1]);
         head.setTranslateX(position[0]);
         
-        area.getChildren().remove(body);
-        body = new Polygon(0, 0, 150, 0, 150, 25, 0, 25);
-        area.getChildren().add(body);
-        body.setRotate(90);
         body.setTranslateY(position[1] + 150 / 2);
         body.setTranslateX(position[0] - 150 / 2);
         
@@ -161,17 +176,15 @@ public class Stickman {
         leg2.setTranslateX(position[0] - 115);
     }
     
+    /**
+     * Puts the stickman to the low attack position
+     * 
+     * @param area the pane used in the game
+     */
     public void position1(Pane area) {
-        area.getChildren().remove(head);
-        head = new Circle(0, 0, 30);
-        area.getChildren().add(head);
         head.setTranslateY(position[1] + 75);
         head.setTranslateX(position[0]);
         
-        area.getChildren().remove(body);
-        body = new Polygon(0, 0, 150, 0, 150, 25, 0, 25);
-        area.getChildren().add(body);
-        body.setRotate(90);
         body.setTranslateY(position[1] + 150);
         body.setTranslateX(position[0] - 150 / 2);
         
@@ -204,17 +217,15 @@ public class Stickman {
         leg2.setTranslateX(position[0] - 15);
     }
     
+    /**
+     * Puts the stickman to the mirrored low attack position
+     * 
+     * @param area the pane used in the game
+     */
     public void position1M(Pane area) {
-        area.getChildren().remove(head);
-        head = new Circle(0, 0, 30);
-        area.getChildren().add(head);
         head.setTranslateY(position[1] + 75);
         head.setTranslateX(position[0]);
         
-        area.getChildren().remove(body);
-        body = new Polygon(0, 0, 150, 0, 150, 25, 0, 25);
-        area.getChildren().add(body);
-        body.setRotate(90);
         body.setTranslateY(position[1] + 150);
         body.setTranslateX(position[0] - 150 / 2);
         
@@ -247,17 +258,15 @@ public class Stickman {
         leg1.setTranslateX(position[0] - 150);
     }
     
+    /**
+     * Puts the stickman to the mirrored high attack position
+     * 
+     * @param area the pane used in the game
+     */
     public void position2M (Pane area) {
-        area.getChildren().remove(head);
-        head = new Circle(0, 0, 30);
-        area.getChildren().add(head);
         head.setTranslateY(position[1]);
         head.setTranslateX(position[0]);
         
-        area.getChildren().remove(body);
-        body = new Polygon(0, 0, 150, 0, 150, 25, 0, 25);
-        area.getChildren().add(body);
-        body.setRotate(90);
         body.setTranslateY(position[1] + 150 / 2);
         body.setTranslateX(position[0] - 150 / 2);
         
@@ -290,17 +299,15 @@ public class Stickman {
         leg2.setTranslateX(position[0] - 155);
     }
     
+    /**
+     * Puts the stickman to the high attack position
+     * 
+     * @param area the pane used in the game
+     */
     public void position2 (Pane area) {
-        area.getChildren().remove(head);
-        head = new Circle(0, 0, 30);
-        area.getChildren().add(head);
         head.setTranslateY(position[1]);
         head.setTranslateX(position[0]);
         
-        area.getChildren().remove(body);
-        body = new Polygon(0, 0, 150, 0, 150, 25, 0, 25);
-        area.getChildren().add(body);
-        body.setRotate(90);
         body.setTranslateY(position[1] + 150 / 2);
         body.setTranslateX(position[0] - 150 / 2);
         
@@ -333,17 +340,15 @@ public class Stickman {
         leg2.setTranslateX(position[0] - 115);//-55
     }
     
+    /**
+     * Puts the stickman to the medium attack position
+     * 
+     * @param area the pane used in the game
+     */
     public void position3 (Pane area) {
-        area.getChildren().remove(head);
-        head = new Circle(0, 0, 30);
-        area.getChildren().add(head);
         head.setTranslateY(position[1]);
         head.setTranslateX(position[0] - 25);
         
-        area.getChildren().remove(body);
-        body = new Polygon(0, 0, 150, 0, 150, 25, 0, 25);
-        area.getChildren().add(body);
-        body.setRotate(90);
         body.setTranslateY(position[1] + 150 / 2);
         body.setTranslateX(position[0] - 150 / 2 - 25);
         
@@ -376,17 +381,15 @@ public class Stickman {
         leg2.setTranslateX(position[0] - 115);
     }
     
+    /**
+     * Puts the stickman to the mirrored medium attack position
+     * 
+     * @param area the pane used in the game
+     */
     public void position3M (Pane area) {
-        area.getChildren().remove(head);
-        head = new Circle(0, 0, 30);
-        area.getChildren().add(head);
         head.setTranslateY(position[1]);
         head.setTranslateX(position[0] + 25);
         
-        area.getChildren().remove(body);
-        body = new Polygon(0, 0, 150, 0, 150, 25, 0, 25);
-        area.getChildren().add(body);
-        body.setRotate(90);
         body.setTranslateY(position[1] + 150 / 2);
         body.setTranslateX(position[0] - 150 / 2 + 25);
         

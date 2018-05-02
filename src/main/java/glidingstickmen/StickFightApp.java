@@ -1,10 +1,15 @@
 package glidingstickmen;
 
 import glidingstickmen.characters.Stickman;
+import glidingstickmen.dao.Database;
+import glidingstickmen.dao.ScoreDao;
 import glidingstickmen.fight.FightLogic;
 import glidingstickmen.menu.UserInter;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.input.KeyCode;
@@ -17,10 +22,12 @@ public class StickFightApp extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        Database db = new Database();
+        ScoreDao scoreDao = new ScoreDao(db.getConnection());
         primaryStage.setTitle("Gliding Stickmen");
         UserInter scene = new UserInter(width, height);
-        scene.createMenu(primaryStage);
-        FightLogic logic = new FightLogic(scene, pressedButtons);
+        scene.createMenu(primaryStage, scoreDao);
+        FightLogic logic = new FightLogic(scene, pressedButtons, scoreDao);
         
         //function for setting keys to be pressed
         scene.getScene().setOnKeyPressed(event -> {
@@ -31,14 +38,22 @@ public class StickFightApp extends Application {
             pressedButtons.put(event.getCode(), Boolean.FALSE);
         });
         
-        new AnimationTimer() {
+        new AnimationTimer()  {
             @Override
             public void handle(long moment) {
                 logic.player1Movement();
                 logic.player2Movement();
 
-                logic.player1Attack();
-                logic.player2Attack();
+                try {
+                    logic.player1Attack();
+                } catch (SQLException ex) {
+                    Logger.getLogger(StickFightApp.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                try {
+                    logic.player2Attack();
+                } catch (SQLException ex) {
+                    Logger.getLogger(StickFightApp.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         }.start();
         

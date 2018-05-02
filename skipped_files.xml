@@ -8,4 +8,5 @@
     <suppress files="glidingstickmen.menu.UserInter.java" checks="[a-zA-Z0-9]*"/>
     <suppress files="glidingstickmen.menu.FightStage.java" checks="[a-zA-Z0-9]*"/>
     <suppress files="glidingstickmen.characters.Stickman.java" checks="[a-zA-Z0-9]*"/>
+    <suppress files="glidingstickmen.StickFightApp.java" checks="[a-zA-Z0-9]*"/>
 </suppressions>

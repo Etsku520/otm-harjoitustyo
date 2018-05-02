@@ -1,8 +1,11 @@
 package glidingstickmen.fight;
 
 import glidingstickmen.menu.FightStage;
+import glidingstickmen.dao.ScoreDao;
+import glidingstickmen.dao.Database;
 import glidingstickmen.characters.Stickman;
 import glidingstickmen.menu.UserInter;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 import javafx.scene.input.KeyCode;
@@ -18,8 +21,10 @@ public class FightLogicTest {
     FightLogic logic;
     Map<KeyCode, Boolean> pressedButtons;
     UserInter scene = new UserInter(1, 1);
+    ScoreDao scoreDao;
     
-    public FightLogicTest() {
+    public FightLogicTest() throws SQLException, ClassNotFoundException {
+        scoreDao = new ScoreDao(new Database().getConnection());
     }
     
     @BeforeClass
@@ -33,11 +38,12 @@ public class FightLogicTest {
     
     @Before
     public void setUp() {
+        
         pressedButtons = new HashMap<>();
         FightStage area = new FightStage(1500, 900, "rick", "morty");
         area.createArea();
         scene.setArea(area);
-        logic = new FightLogic(scene, pressedButtons);
+        logic = new FightLogic(scene, pressedButtons, scoreDao);
     }
     
     @After
@@ -73,7 +79,7 @@ public class FightLogicTest {
     }
     
     @Test
-    public void attackHitOrMiss() {
+    public void attackHitOrMiss() throws SQLException {
         assertEquals(0, logic.scoreOrWin(scene.getArea().getPlayer1(), scene.getArea().getPlayer2()));
         
         scene.getArea().getPlayer1().setPosition(new int[]{150, 225}, scene.getArea().getArea(), 2);
@@ -84,7 +90,7 @@ public class FightLogicTest {
     }
     
     @Test
-    public void stanceCounters() {
+    public void stanceCounters() throws SQLException {
         scene.getArea().getPlayer1().setPosition(new int[]{150, 225}, scene.getArea().getArea(), 2);
         scene.getArea().getPlayer2().setPosition(new int[]{150, 225}, scene.getArea().getArea(), -2);
         
@@ -186,7 +192,7 @@ public class FightLogicTest {
     }
     
     @Test
-    public void quickP2Attack() {
+    public void quickP2Attack() throws SQLException {
         scene.getArea().getPlayer1().setPosition(new int[]{150, 225}, scene.getArea().getArea(), 2);
         scene.getArea().getPlayer2().setPosition(new int[]{150, 225}, scene.getArea().getArea(), -2);
         

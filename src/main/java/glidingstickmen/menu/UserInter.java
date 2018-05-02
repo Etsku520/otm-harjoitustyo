@@ -1,6 +1,12 @@
 package glidingstickmen.menu;
 
 import glidingstickmen.characters.Stickman;
+import glidingstickmen.dao.Score;
+import glidingstickmen.dao.ScoreDao;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -30,10 +36,10 @@ public class UserInter {
     }
     
     
-    public void createMenu(Stage stage) {
+    public void createMenu(Stage stage, ScoreDao scoredao) {
         Stickman player1 = area.getPlayer1();
         
-        VBox vButtons = makeVBox();
+        VBox vButtons = makeVBox(scoredao);
         Button menuButton = new Button("Menu");
         Button exitButton = new Button("Exit");
         
@@ -49,6 +55,8 @@ public class UserInter {
         menuButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                VBox vButtons = makeVBox(scoredao);
+                vButtons.setAlignment(Pos.CENTER);
                 layout.setCenter(vButtons);
             }
             
@@ -86,7 +94,7 @@ public class UserInter {
         return area;
     }
     
-    public VBox makeVBox() {
+    public VBox makeVBox(ScoreDao scoredao) {
         VBox vButtons = new VBox();
         Button playButton = new Button("Play!");
         Button statisticsButton = new Button("Some statistics");
@@ -110,7 +118,25 @@ public class UserInter {
         statisticsButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                layout.setCenter(new Label("There is none!"));
+                ArrayList<Score> scores = new ArrayList<>();
+                try {
+                    scores = (ArrayList<Score>) scoredao.getScores();
+                } catch (SQLException ex) {
+                    Logger.getLogger(UserInter.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+                String text = "";
+                for (Score score : scores) {
+                    text += score.getPlayer1() + " | " + score.getScore1() + "-" + score.getScore2() + " | " + score.getPlayer2() + "\n";
+                }
+                
+                if(scores.isEmpty()) {
+                    text = "Go make stats";
+                }
+                
+                Label score = new Label(text);
+                
+                layout.setCenter(score);
             }
         });
         
@@ -134,9 +160,7 @@ public class UserInter {
                         + "- low wins high\n"
                         + "- medium wins low\n"
                         + "- high wins medium\n\n"
-                        + "and no there is no animations yet.\n"
-                        + "you have to guess what's going on.\n\n"
-                        + "Also it's best of five\nand one hit gives you a round");
+                        + "it's best of five\nand one hit gives you a round");
                 
                 commands.getChildren().add(player1);
                 commands.getChildren().add(player2);
