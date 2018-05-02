@@ -13,7 +13,7 @@ Ohjelma on varsinkin tällä hetkellä glorified kivi-paperi-sakset, mutta jos j
 
 [arkkitehtuuri](https://github.com/Etsku520/otm-harjoitustyo/blob/master/documentation/arkkitehtuuri.md)
 
-[käyttöohjeet]https://github.com/Etsku520/otm-harjoitustyo/blob/master/documentation/K%C3%A4ytt%C3%B6ohje.md)
+[käyttöohjeet](https://github.com/Etsku520/otm-harjoitustyo/blob/master/documentation/K%C3%A4ytt%C3%B6ohje.md)
 
 ## Komentorivitoiminnot
 ### Testsaus
