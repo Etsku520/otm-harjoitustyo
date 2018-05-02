@@ -182,23 +182,16 @@ public class Stickman {
      * @param area the pane used in the game
      */
     public void position1(Pane area) {
+        position0(area);
         head.setTranslateY(position[1] + 75);
         head.setTranslateX(position[0]);
         
         body.setTranslateY(position[1] + 150);
         body.setTranslateX(position[0] - 150 / 2);
         
-        area.getChildren().remove(leg1);
-        leg1 = new Polygon(0, 0, 170, 0, 170, 20, 0, 20);
-        area.getChildren().add(leg1);
-        leg1.setRotate(70);
         arm1.setTranslateY(position[1] + 150 + 20);
         arm1.setTranslateX(position[0] - 150 / 2 + 40);
         
-        area.getChildren().remove(arm2);
-        arm2 = new Polygon(0, 0, 150, 0, 150, 15, 0, 15);
-        area.getChildren().add(arm2);
-        arm2.setRotate(-60);
         arm2.setTranslateY(position[1] + 150 + 20);
         arm2.setTranslateX(position[0] - 150 / 2 - 40);
         
@@ -209,9 +202,6 @@ public class Stickman {
         leg1.setTranslateY(position[1] + 250);
         leg1.setTranslateX(position[0] - 55);
 
-        area.getChildren().remove(leg2);
-        leg2 = new Polygon(0, 0, 170, 0, 170, 20, 0, 20);
-        area.getChildren().add(leg2);
         leg2.setRotate(20);
         leg2.setTranslateY(position[1] + 250);
         leg2.setTranslateX(position[0] - 15);
@@ -223,25 +213,14 @@ public class Stickman {
      * @param area the pane used in the game
      */
     public void position1M(Pane area) {
+        position0(area);
         head.setTranslateY(position[1] + 75);
-        head.setTranslateX(position[0]);
         
         body.setTranslateY(position[1] + 150);
-        body.setTranslateX(position[0] - 150 / 2);
-        
-        area.getChildren().remove(leg1);
-        leg1 = new Polygon(0, 0, 170, 0, 170, 20, 0, 20);
-        area.getChildren().add(leg1);
-        leg1.setRotate(70);
+
         arm1.setTranslateY(position[1] + 150 + 20);
-        arm1.setTranslateX(position[0] - 150 / 2 + 40);
         
-        area.getChildren().remove(arm2);
-        arm2 = new Polygon(0, 0, 150, 0, 150, 15, 0, 15);
-        area.getChildren().add(arm2);
-        arm2.setRotate(-60);
         arm2.setTranslateY(position[1] + 150 + 20);
-        arm2.setTranslateX(position[0] - 150 / 2 - 40);
         
         area.getChildren().remove(leg2);
         leg2 = new Polygon(0, 0, 85, 0, 85, 20, 0, 20);
@@ -250,9 +229,6 @@ public class Stickman {
         leg2.setTranslateY(position[1] + 250);
         leg2.setTranslateX(position[0] - 25);
 
-        area.getChildren().remove(leg1);
-        leg1 = new Polygon(0, 0, 170, 0, 170, 20, 0, 20);
-        area.getChildren().add(leg1);
         leg1.setRotate(-20);
         leg1.setTranslateY(position[1] + 250);
         leg1.setTranslateX(position[0] - 150);
@@ -264,37 +240,12 @@ public class Stickman {
      * @param area the pane used in the game
      */
     public void position2M (Pane area) {
-        head.setTranslateY(position[1]);
-        head.setTranslateX(position[0]);
-        
-        body.setTranslateY(position[1] + 150 / 2);
-        body.setTranslateX(position[0] - 150 / 2);
-        
-        area.getChildren().remove(arm1);
-        arm1 = new Polygon(0, 0, 150, 0, 150, 15, 0, 15);
-        area.getChildren().add(arm1);
-        arm1.setRotate(60);
-        arm1.setTranslateY(position[1] + 150 / 2 + 20);
-        arm1.setTranslateX(position[0] - 150 / 2 + 40);
-        
-        area.getChildren().remove(arm2);
-        arm2 = new Polygon(0, 0, 150, 0, 150, 15, 0, 15);
-        area.getChildren().add(arm2);
-        arm2.setRotate(-60);
-        arm2.setTranslateY(position[1] + 150 / 2 + 20);
-        arm2.setTranslateX(position[0] - 150 / 2 - 40);
-        
-        area.getChildren().remove(leg1);
-        leg1 = new Polygon(0, 0, 170, 0, 170, 20, 0, 20);
-        area.getChildren().add(leg1);
-        leg1.setRotate(70);
+        position0(area);
+
         leg1.setTranslateY(position[1] + 220);
         leg1.setTranslateX(position[0] - 55);
         
-        area.getChildren().remove(leg2);
-        leg2 = new Polygon(0, 0, 170, 0, 170, 20, 0, 20);
         leg2.setRotate(35);
-        area.getChildren().add(leg2);
         leg2.setTranslateY(position[1] + 105);
         leg2.setTranslateX(position[0] - 155);
     }
@@ -305,37 +256,12 @@ public class Stickman {
      * @param area the pane used in the game
      */
     public void position2 (Pane area) {
-        head.setTranslateY(position[1]);
-        head.setTranslateX(position[0]);
+        position0(area);
         
-        body.setTranslateY(position[1] + 150 / 2);
-        body.setTranslateX(position[0] - 150 / 2);
-        
-        area.getChildren().remove(arm1);
-        arm1 = new Polygon(0, 0, 150, 0, 150, 15, 0, 15);
-        area.getChildren().add(arm1);
-        arm1.setRotate(60);
-        arm1.setTranslateY(position[1] + 150 / 2 + 20);
-        arm1.setTranslateX(position[0] - 150 / 2 + 40);
-        
-        area.getChildren().remove(arm2);
-        arm2 = new Polygon(0, 0, 150, 0, 150, 15, 0, 15);
-        area.getChildren().add(arm2);
-        arm2.setRotate(-60);
-        arm2.setTranslateY(position[1] + 150 / 2 + 20);
-        arm2.setTranslateX(position[0] - 150 / 2 - 40);
-        
-        area.getChildren().remove(leg1);
-        leg1 = new Polygon(0, 0, 170, 0, 170, 20, 0, 20);
-        area.getChildren().add(leg1);
         leg1.setRotate(-35);
         leg1.setTranslateY(position[1] + 105);
         leg1.setTranslateX(position[0] - 15);
         
-        area.getChildren().remove(leg2);
-        leg2 = new Polygon(0, 0, 170, 0, 170, 20, 0, 20);
-        leg2.setRotate(-70);
-        area.getChildren().add(leg2);
         leg2.setTranslateY(position[1] + 220);//220
         leg2.setTranslateX(position[0] - 115);//-55
     }
@@ -346,37 +272,21 @@ public class Stickman {
      * @param area the pane used in the game
      */
     public void position3 (Pane area) {
-        head.setTranslateY(position[1]);
+        position0(area);
         head.setTranslateX(position[0] - 25);
         
-        body.setTranslateY(position[1] + 150 / 2);
         body.setTranslateX(position[0] - 150 / 2 - 25);
         
-        area.getChildren().remove(arm1);
-        arm1 = new Polygon(0, 0, 150, 0, 150, 15, 0, 15);
-        area.getChildren().add(arm1);
-        arm1.setRotate(60);
-        arm1.setTranslateY(position[1] + 150 / 2 + 20);
         arm1.setTranslateX(position[0] - 150 / 2 + 15);
         
-        area.getChildren().remove(arm2);
-        arm2 = new Polygon(0, 0, 150, 0, 150, 15, 0, 15);
-        area.getChildren().add(arm2);
-        arm2.setRotate(-60);
         arm2.setTranslateY(position[1] + 150 / 2 + 20);
         arm2.setTranslateX(position[0] - 150 / 2 - 65);
         
-        area.getChildren().remove(leg1);
-        leg1 = new Polygon(0, 0, 170, 0, 170, 20, 0, 20);
-        area.getChildren().add(leg1);
         leg1.setRotate(5);
         leg1.setTranslateY(position[1] + 170);
         leg1.setTranslateX(position[0] - 30);
         
-        area.getChildren().remove(leg2);
-        leg2 = new Polygon(0, 0, 170, 0, 170, 20, 0, 20);
         leg2.setRotate(-85);
-        area.getChildren().add(leg2);
         leg2.setTranslateY(position[1] + 220);
         leg2.setTranslateX(position[0] - 115);
     }
@@ -387,37 +297,20 @@ public class Stickman {
      * @param area the pane used in the game
      */
     public void position3M (Pane area) {
-        head.setTranslateY(position[1]);
+        position0(area);
         head.setTranslateX(position[0] + 25);
         
-        body.setTranslateY(position[1] + 150 / 2);
         body.setTranslateX(position[0] - 150 / 2 + 25);
         
-        area.getChildren().remove(arm1);
-        arm1 = new Polygon(0, 0, 150, 0, 150, 15, 0, 15);
-        area.getChildren().add(arm1);
-        arm1.setRotate(60);
-        arm1.setTranslateY(position[1] + 150 / 2 + 20);
         arm1.setTranslateX(position[0] - 150 / 2 + 65);
         
-        area.getChildren().remove(arm2);
-        arm2 = new Polygon(0, 0, 150, 0, 150, 15, 0, 15);
-        area.getChildren().add(arm2);
-        arm2.setRotate(-60);
-        arm2.setTranslateY(position[1] + 150 / 2 + 20);
         arm2.setTranslateX(position[0] - 150 / 2 - 15);
         
-        area.getChildren().remove(leg1);
-        leg1 = new Polygon(0, 0, 170, 0, 170, 20, 0, 20);
-        area.getChildren().add(leg1);
         leg1.setRotate(85);
         leg1.setTranslateY(position[1] + 220);
         leg1.setTranslateX(position[0] - 55);
         
-        area.getChildren().remove(leg2);
-        leg2 = new Polygon(0, 0, 170, 0, 170, 20, 0, 20);
         leg2.setRotate(-5);
-        area.getChildren().add(leg2);
         leg2.setTranslateY(position[1] + 170);
         leg2.setTranslateX(position[0] - 140);
     }
