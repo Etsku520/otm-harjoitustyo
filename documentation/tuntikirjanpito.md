@@ -28,4 +28,12 @@
 
 24.04 2h      Checkstyle korjaus, skvenssikaavio, jar tiesdosto, README muokkaus
 
-yhteensä: 19h 55min
+02.05 3h      Tietokannan lisääminen ja sen toiminta
+
+02.05 1h      Testejä
+
+02.05 1h      Koodin dokumentaatio
+
+02.05 1h      Muu dokumentaatio
+
+yhteensä: 25h 55min
