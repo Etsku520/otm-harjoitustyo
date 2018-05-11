@@ -90,7 +90,7 @@ public class FightLogicTest {
     }
     
     @Test
-    public void stanceCounters() throws SQLException {
+    public void p1AttacksStance1Test() throws SQLException {
         scene.getArea().getPlayer1().setPosition(new int[]{150, 225}, scene.getArea().getArea(), 2);
         scene.getArea().getPlayer2().setPosition(new int[]{150, 225}, scene.getArea().getArea(), -2);
         
@@ -124,13 +124,19 @@ public class FightLogicTest {
         pressedButtons.put(KeyCode.MINUS, Boolean.FALSE);
         scene.getArea().getPlayer1().setPosition(new int[]{150, 225}, scene.getArea().getArea(), -2);
         scene.getArea().getPlayer2().setPosition(new int[]{150, 225},  scene.getArea().getArea(), 2);
+    }
+    
+    @Test
+    public void p1AttacksStance2() throws SQLException {
+        scene.getArea().getPlayer1().setPosition(new int[]{150, 225}, scene.getArea().getArea(), -2);
+        scene.getArea().getPlayer2().setPosition(new int[]{150, 225}, scene.getArea().getArea(), 2);
         
         //stance 2
         pressedButtons.put(KeyCode.T, Boolean.TRUE);
         pressedButtons.put(KeyCode.COMMA, Boolean.TRUE);
         scene.getArea().getPlayer2().setStance(2);
         logic.player1Attack();
-        assertEquals(1, scene.getArea().getScore()[0]);
+        assertEquals(0, scene.getArea().getScore()[0]);
         pressedButtons.put(KeyCode.T, Boolean.FALSE);
         pressedButtons.put(KeyCode.COMMA, Boolean.FALSE);
         scene.getArea().getPlayer1().setPosition(new int[]{150, 225}, scene.getArea().getArea(), 2);
@@ -140,7 +146,7 @@ public class FightLogicTest {
         pressedButtons.put(KeyCode.PERIOD, Boolean.TRUE);
         scene.getArea().getPlayer2().setStance(3);
         logic.player1Attack();
-        assertEquals(1, scene.getArea().getScore()[0]);
+        assertEquals(0, scene.getArea().getScore()[0]);
         pressedButtons.put(KeyCode.T, Boolean.FALSE);
         pressedButtons.put(KeyCode.PERIOD, Boolean.FALSE);
         scene.getArea().getPlayer1().setPosition(new int[]{150, 225}, scene.getArea().getArea(), -2);
@@ -150,18 +156,24 @@ public class FightLogicTest {
         pressedButtons.put(KeyCode.MINUS, Boolean.TRUE);
         scene.getArea().getPlayer2().setStance(1);
         logic.player1Attack();
-        assertEquals(2, scene.getArea().getScore()[0]);
+        assertEquals(1, scene.getArea().getScore()[0]);
         pressedButtons.put(KeyCode.T, Boolean.FALSE);
         pressedButtons.put(KeyCode.MINUS, Boolean.FALSE);
         scene.getArea().getPlayer1().setPosition(new int[]{150, 225}, scene.getArea().getArea(), 2);
         scene.getArea().getPlayer2().setPosition(new int[]{150, 225}, scene.getArea().getArea(), -2);
+    }
+    
+    @Test
+    public void p1AttacksStance3() throws SQLException {
+        scene.getArea().getPlayer1().setPosition(new int[]{150, 225}, scene.getArea().getArea(), -2);
+        scene.getArea().getPlayer2().setPosition(new int[]{150, 225}, scene.getArea().getArea(), 2);
         
         //stance 3
         pressedButtons.put(KeyCode.Y, Boolean.TRUE);
         pressedButtons.put(KeyCode.COMMA, Boolean.TRUE);
         scene.getArea().getPlayer2().setStance(2);
         logic.player1Attack();
-        assertEquals(2, scene.getArea().getScore()[0]);
+        assertEquals(0, scene.getArea().getScore()[0]);
         pressedButtons.put(KeyCode.Y, Boolean.FALSE);
         pressedButtons.put(KeyCode.COMMA, Boolean.FALSE);
         FightStage area = new FightStage(1500, 900, "rick", "morty");
